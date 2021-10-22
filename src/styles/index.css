@@ -1,6 +1,56 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* Your own custom component styles */
 
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  .gradient {
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #fafafa 8%, #f4f4f4 38%, #fafafa 54%);
+    background-size: 1000px 640px;
+
+    position: relative;
+  }
+
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+  .fadeInAnimation {
+    animation: fadeIn 1s normal forwards ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .details {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .tilecontainer:hover .details {
+    opacity: 1;
+  }
+
+  .max-h-80 {
+    max-height: 80vh;
+  }
+}
