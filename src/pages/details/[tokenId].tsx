@@ -46,8 +46,15 @@ export default function Details() {
         "/protocol/v0.1/ethereum/order/orders/sell/byItem",
       { params: { contract, tokenId: token } }
     );
+
     //@ts-ignore
-    setSellOrder(data.orders[data.orders.length - 1]);
+    let sortedData = data.orders.sort(
+      //@ts-ignore
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    //@ts-ignore
+    setSellOrder(sortedData[0]);
+    console.log(data);
   };
 
   const handleInputChange = (event) => {

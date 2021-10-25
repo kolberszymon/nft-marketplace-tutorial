@@ -79,18 +79,19 @@ export default function Home() {
         {/* If he is connected and NFTS are fetched show them */}
         {currentAcc && !isLoading && (
           <div className="w-full h-full flex items-center justify-start flex-wrap">
-            {nfts &&
-              nfts.map((nft) => {
-                return (
-                  <NFTTile
-                    sendData={handleSelectNft}
-                    name={nft.name}
-                    id={nft.id}
-                    imgSrc={nft.imageUrl}
-                    key={nft.id}
-                  />
-                );
-              })}
+            {nfts && nfts.length > 0
+              ? nfts.map((nft) => {
+                  return (
+                    <NFTTile
+                      sendData={handleSelectNft}
+                      name={nft.name}
+                      id={nft.id}
+                      imgSrc={nft.imageUrl}
+                      key={nft.id}
+                    />
+                  );
+                })
+              : "It seems that you don't have any NFTs yet :)"}
           </div>
         )}
       </main>

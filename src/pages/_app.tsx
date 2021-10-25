@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     if (ethereum && ethereum.isMetaMask) {
       setProvider(ethereum);
+      console.log(ethereum);
 
       ethereum.on("accountsChanged", (accs: string[]) => {
         setAccounts(accs);
@@ -44,6 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
 
       setWeb3(new Web3(ethereum));
+      console.log(web3);
     } else {
       window.alert("Please install Metamask");
     }
