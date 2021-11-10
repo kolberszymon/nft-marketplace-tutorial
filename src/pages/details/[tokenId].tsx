@@ -1,12 +1,11 @@
-import MetaMaskButton from "../../components/ConnectMetamaskButton";
 import { useEthContext } from "../../context/EthereumContext";
 import { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import { currentChainInfo } from "../../constants/addresses";
-import NFTTile from "../../components/NFTTile";
 import { useRouter } from "next/router";
 import { createSellOrder } from "../../utils/sellOrderRequests";
+import { SelectChainDropdown } from "../../components/SelectChainDropdown";
 
 export default function Details() {
   const { accounts, provider, currentAcc } = useEthContext();
@@ -84,7 +83,8 @@ export default function Details() {
   };
 
   return (
-    <div className="container flex items-center p-4 mx-auto min-h-screen w-full justify-center">
+    <div className="flex items-center p-4 min-h-screen w-full justify-center bg-yellow-400 relative">
+      <SelectChainDropdown />
       {isLoading && (
         <div className="w-full h-full flex items-center justify-start flex-col">
           <Loader type="TailSpin" color="#000" height={50} width={50} />

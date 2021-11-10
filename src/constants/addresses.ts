@@ -37,6 +37,10 @@ export const getRaribleUrl = (network, contractId, tokenId) => {
 };
 
 type NETWORKS = "MAINNET" | "RINKEBY" | "ROPSTEN";
+export const networks: NETWORKS[] = ["MAINNET", "RINKEBY", "ROPSTEN"];
+export const changeCurrentNetwork = (newNetwork: NETWORKS) => {
+  currentNetwork = newNetwork;
+};
 
-export const currentNetwork: NETWORKS = `ROPSTEN`;
+export let currentNetwork: NETWORKS = `ROPSTEN`;
 export let currentChainInfo = chainInfo[currentNetwork];

@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 import { currentChainInfo } from "../constants/addresses";
 import NFTTile from "../components/NFTTile";
+import { SelectChainDropdown } from "../components/SelectChainDropdown";
 
 type NftItem = {
   id: string;
@@ -62,7 +63,8 @@ export default function Home() {
   const handleSelectNft = () => {};
 
   return (
-    <div className="container flex items-center p-4 mx-auto min-h-screen w-full justify-center">
+    <div className="flex items-center p-4 min-h-screen w-full justify-center bg-yellow-400 relative">
+      <SelectChainDropdown />
       <main>
         {/* If the user is not connected to site */}
         {!currentAcc && (
@@ -83,7 +85,6 @@ export default function Home() {
               ? nfts.map((nft) => {
                   return (
                     <NFTTile
-                      sendData={handleSelectNft}
                       name={nft.name}
                       id={nft.id}
                       imgSrc={nft.imageUrl}

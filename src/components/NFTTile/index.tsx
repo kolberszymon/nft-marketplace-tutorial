@@ -1,18 +1,14 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 type NFTTileProps = {
-  sendData: (id: string) => void;
   id: string;
   imgSrc: string;
   name: string;
 };
 
-const NFTTile: React.FC<NFTTileProps> = ({ sendData, id, imgSrc, name }) => {
+const NFTTile: React.FC<NFTTileProps> = ({ id, imgSrc, name }) => {
   const [isLoaded, setIsLoaded] = useState<Boolean>(false);
-
-  const handleClick = () => {
-    sendData(id);
-  };
 
   const onLoad = () => {
     console.log("loaded");
@@ -31,7 +27,9 @@ const NFTTile: React.FC<NFTTileProps> = ({ sendData, id, imgSrc, name }) => {
         <p className="text-xl font-bold text-center">{name}</p>
 
         <button className="uppercase">
-          <a href={`/details/${id}`}>Details</a>
+          <Link href={`/details/${id}`}>
+            <p>Details</p>
+          </Link>
         </button>
       </div>
     </div>
